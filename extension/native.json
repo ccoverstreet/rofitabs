@@ -1,0 +1,7 @@
+{
+  "name": "rofitabs",
+  "description": "Rofitab native mediator",
+  "path": "$HOME/.local/bin/rofitabsmediator",
+  "type": "stdio",
+  "allowed_extensions": ["rofitabs@jarmuz.com"]
+}
