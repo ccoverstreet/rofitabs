@@ -27,18 +27,12 @@ fn main() -> io::Result<()> {
     let mut stream = TcpStream::connect("localhost:23023").expect("Connection to mediator failed");
 
     if args.len() < 2 {
-        println!("list");
-        send_client_msg(&mut stream, "list", json!({}))?;
-        let res = read_client_msg(&mut stream).expect("Unable to receive message for list command");
-        rofi_print(&res["data"]);
+        list_tabs_and_print(&mut stream).expect("Unable to retrieve tabs");
         return Ok(());
     }
 
     if args[1] == "list" {
-        println!("list");
-        send_client_msg(&mut stream, "list", json!({}))?;
-        let res = read_client_msg(&mut stream).expect("Unable to receive message for list command");
-        rofi_print(&res["data"]);
+        list_tabs_and_print(&mut stream).expect("Unable to retrieve tabs");
     } else if args[1] == "activate" {
         if args.len() < 3 {
             println!("Must provide a tab id to activate");
@@ -49,6 +43,14 @@ fn main() -> io::Result<()> {
     } else { // Assume that ID is the only provided argument
         send_client_msg(&mut stream, "activate", json!(args[1]))?
     }
+
+    Ok(())
+}
+
+fn list_tabs_and_print(mut stream: &mut std::net::TcpStream) -> io::Result<()> {
+    send_client_msg(&mut stream, "list", json!({}))?;
+    let res = read_client_msg(&mut stream).expect("Unable to receive message for list command");
+    rofi_print(&res["data"]);
 
     Ok(())
 }
