@@ -2,7 +2,7 @@
 
 Rofitabs is a minimal extension with the native portion written in rust for switching between tabs in Firefox using Rofi. There are two native executables (`rofitabs` and `rofitabsmediator`). The `rofitabs` executable is the CLI client that can query tab ids and titles from firefox (just run `rofitabs`) and activate them (`rofitabs <tabId>`). 
 
-I've been a long time user of Brotab and this project takes inspiration from Brotab. I realized that I only needed the ability to list tabs and activate them, so I wrote a minimal version.
+I've been a long time user of Brotab and this project takes inspiration from Brotab. I realized that I only needed the ability to list tabs and activate them, so I wrote a minimal version to minimize latency when opening Rofi.
 
 ## Installation
 
