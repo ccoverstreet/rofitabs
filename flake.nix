@@ -29,7 +29,7 @@
             install -m755 "$bin" "$dest/$(basename "$bin")"
           done
 
-          #"$dest/${rofitab}" install
+          "$dest/rofitabs" install
           '';
       };
     in
