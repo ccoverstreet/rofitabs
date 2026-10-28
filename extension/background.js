@@ -33,15 +33,23 @@ port.onMessage.addListener(async (msg) => {
 
 
 browser.tabs.onCreated.addListener(async (addedInfo) => {
-	console.log(addedInfo);
 	let query = await browser.tabs.query({});
 	postMessageToPort(port, "tabs", query)
 })
 
 browser.tabs.onRemoved.addListener(async (tabId, removeInfo) => {
-	console.log(removeInfo);
 	let query = await browser.tabs.query({});
 	postMessageToPort(port, "tabs", query)
 })
+
+browser.tabs.onUpdated.addListener(async (tabId, updateInfo) => {
+	let query = await browser.tabs.query({});
+	postMessageToPort(port, "tabs", query)
+});
+
+browser.tabs.onReplaced.addListener(async (tabId, replaceInfo) => {
+	let query = await browser.tabs.query({});
+	postMessageToPort(port, "tabs", query)
+});
 
 
